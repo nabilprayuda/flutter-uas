@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class BarangScreen extends StatefulWidget {
+  const BarangScreen({super.key});
+
   @override
   _BarangScreenState createState() => _BarangScreenState();
 }
@@ -60,7 +62,7 @@ class _BarangScreenState extends State<BarangScreen> {
     if (response.statusCode == 200) {
       fetchBarangData(); // Update data setelah barang ditambahkan
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Barang berhasil ditambahkan!')),
+        const SnackBar(content: Text('Barang berhasil ditambahkan!')),
       );
     } else {
       throw Exception('Failed to add barang');
@@ -92,7 +94,7 @@ class _BarangScreenState extends State<BarangScreen> {
                 children: [
                   TextFormField(
                     controller: _namabrController,
-                    decoration: InputDecoration(labelText: 'Nama Barang'),
+                    decoration: const InputDecoration(labelText: 'Nama Barang'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Nama barang tidak boleh kosong';
@@ -102,7 +104,7 @@ class _BarangScreenState extends State<BarangScreen> {
                   ),
                   TextFormField(
                     controller: _jenisController,
-                    decoration: InputDecoration(labelText: 'Jenis Barang'),
+                    decoration: const InputDecoration(labelText: 'Jenis Barang'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Jenis barang tidak boleh kosong';
@@ -112,7 +114,7 @@ class _BarangScreenState extends State<BarangScreen> {
                   ),
                   TextFormField(
                     controller: _satuanController,
-                    decoration: InputDecoration(labelText: 'Satuan Barang'),
+                    decoration: const InputDecoration(labelText: 'Satuan Barang'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Satuan barang tidak boleh kosong';
@@ -123,7 +125,7 @@ class _BarangScreenState extends State<BarangScreen> {
                   // Dropdown untuk memilih supplier
                   DropdownButtonFormField<String>(
                     value: _selectedSupplier,
-                    hint: Text('Pilih Supplier'),
+                    hint: const Text('Pilih Supplier'),
                     items: _supplierList.map((supplier) {
                       return DropdownMenuItem<String>(
                         value: supplier['sup_id'].toString(),
@@ -142,26 +144,26 @@ class _BarangScreenState extends State<BarangScreen> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         addBarang(); // Menambahkan barang jika validasi berhasil
                       }
                     },
-                    child: Text('Tambah Barang'),
+                    child: const Text('Tambah Barang'),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Tabel data barang
             Expanded(
               child: ListView.builder(
                 itemCount: _barangList.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    margin: EdgeInsets.symmetric(vertical: 8),
+                    margin: const EdgeInsets.symmetric(vertical: 8),
                     child: ListTile(
                       title: Text(_barangList[index]['namabr']),
                       subtitle: Text('${_barangList[index]['jenis']} - ${_barangList[index]['satuan']}'),
