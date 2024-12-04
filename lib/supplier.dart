@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class SupplierScreen extends StatefulWidget {
+  const SupplierScreen({super.key});
+
   @override
   _SupplierScreenState createState() => _SupplierScreenState();
 }
