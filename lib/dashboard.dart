@@ -4,6 +4,8 @@ import 'supplier.dart'; // Import halaman supplier
 import 'pembelian.dart'; // Import halaman pembelian
 
 class DashboardScreen extends StatelessWidget {
+  const DashboardScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
