@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class PembelianScreen extends StatefulWidget {
+  const PembelianScreen({super.key});
+
   @override
   _PembelianScreenState createState() => _PembelianScreenState();
 }
@@ -65,14 +67,14 @@ class _PembelianScreenState extends State<PembelianScreen> {
     // Periksa apakah ada supplier dan barang yang dipilih
     if (_selectedSupplier == null || _selectedSupplier!.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Supplier harus dipilih')),
+        const SnackBar(content: Text('Supplier harus dipilih')),
       );
       return;
     }
 
     if (_selectedBarang == null || _selectedBarang!.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Barang harus dipilih')),
+        const SnackBar(content: Text('Barang harus dipilih')),
       );
       return;
     }
@@ -84,13 +86,13 @@ class _PembelianScreenState extends State<PembelianScreen> {
         qty = int.parse(_qtyController.text); // Hanya lanjutkan jika valid
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Qty harus berupa angka')),
+          const SnackBar(content: Text('Qty harus berupa angka')),
         );
         return;
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Qty tidak boleh kosong')),
+        const SnackBar(content: Text('Qty tidak boleh kosong')),
       );
       return;
     }
@@ -116,7 +118,7 @@ class _PembelianScreenState extends State<PembelianScreen> {
     if (response.statusCode == 200) {
       fetchPembelianData(); // Update data setelah pembelian ditambahkan
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Pembelian berhasil ditambahkan!')),
+        const SnackBar(content: Text('Pembelian berhasil ditambahkan!')),
       );
     } else {
       throw Exception('Failed to add pembelian');
